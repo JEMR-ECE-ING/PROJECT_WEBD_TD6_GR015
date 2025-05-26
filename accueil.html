@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sportify</title>
+    <title>Sportify_Accueil</title>
     <!--Feuille de CSS-->
     <link rel="stylesheet" href="style.css"></head>
 <body>
@@ -16,8 +16,8 @@
             </div>
             
             <ul class="nav-menu">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#parcourir">Tout Parcourir</a></li>
+                <li><a href="accueil.html">Accueil</a></li>
+                <li><a href="tout_parcourir.html">Tout Parcourir</a></li>
                 <li><a href="#recherche">Recherche</a></li>
                 <li><a href="#rdv">Rendez-vous</a></li>
                 <li><a href="#compte">Votre Compte</a></li>
@@ -36,60 +36,38 @@
     <main class="main-content">
         <!-- Hero Section -->
         <section class="hero">
+            <video autoplay muted loop class="hero-video">
+                <source src="images/video.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo HTML5.
+            </video>
             <h1>LIBÉREZ VOTRE POTENTIEL SPORTIF</h1>
-            <p>Consultation sur mesure, staff personnalisé et performance optimale.</p>
-            <p>Commencez dès aujourd'hui avec nos coachs certifiés.</p>
+            <p>Sportify est la plateforme de consultation sportive en ligne dédiée à la communauté Omnes Education.</p>
+            <P>Vous y découvrez tous nos spécialistes – coachs d’activités sportives, entraîneurs de sports de compétition ou responsables de la salle Omnes – et accédez à leur profil complet (CV, coordonnées, planning hebdomadaire).</P>
+            <P>Échangez en un clic par chat, audio ou visioconférence, réservez directement un créneau disponible et recevez votre confirmation par email ou SMS. </P>
+            <P>Sportify simplifie la prise de rendez-vous et vous accompagne efficacement vers vos objectifs, où que vous soyez ! </p>
             <button class="cta-button">Prendre RDV</button>
         </section>
 
-        <!-- Services Section -->
-        <section class="services-section">
-            <h2 class="services-title">NOS SERVICES</h2>
-            <div class="services-grid">
-                <div class="service-card" onclick="showCategory('activites')">
-                    <div><img src="images/muscu.png" class="service-icon"></div>
-                    <h3>Activités Sportives</h3>
-                    <p>Musculation, Fitness, Biking, Cardio-Training, Cours Collectifs</p>
-                    <button class="service-button">VOIR SERVICES</button>
-                </div>
-
-                <div class="service-card" onclick="showCategory('competition')">
-                    <div><img src="images/trophe.png" class="service-icon"></div>
-                    <h3>Sports de Compétition</h3>
-                    <p>Basketball, Football, Rugby, Tennis, Natation, Plongeon</p>
-                    <button class="service-button">VOIR SERVICES</button>
-                </div>
-
-                <div class="service-card" onclick="showCategory('salle')">
-                    <div><img src="images/omnes.png" class="service-icon"></div>
-                    <h3>Salle de Sport Omnes</h3>
-                    <p>Équipements, Horaires, Règles d'utilisation, Nouveaux clients</p>
-                    <button class="service-button">VOIR SERVICES</button>
-                </div>
-
-                <div class="service-card" onclick="showCategory('consultation')">
-                    <div><img src="images/consulting.png" class="service-icon"></div>
-                    <h3>Consultation Personnalisée</h3>
-                    <p>Suivi individuel, Programmes sur mesure, Conseils nutritionnels</p>
-                    <button class="service-button">VOIR SERVICES</button>
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Event Section -->
         <section class="event-section">
             <h2 class="event-title">ÉVÉNEMENT DE LA SEMAINE</h2>
             <div class="event-content">
-                <div class="event-image">
-                    [IMAGE DE L'ÉVÉNEMENT]
-                </div>
+                 <video autoplay muted loop class="hero-video">
+                    <source src="images/video2.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la video HTML5.
+                 </video>
                 <div>
+                    <img src="images/rugby.png" alt="Match de Rugby" class="event-image">
+                </div>
+                <div class="event-details">
                     <h3>Match de Rugby : Omnes Education vs. Visiteurs</h3>
                     <p>Rejoignez-nous ce samedi pour un match passionnant entre notre équipe Omnes Education et nos visiteurs. Venez encourager nos joueurs et découvrir l'esprit sportif de notre communauté.</p>
                     <p><strong>Date :</strong> Samedi 31 Mai 2025</p>
                     <p><strong>Heure :</strong> 15h00</p>
                     <p><strong>Lieu :</strong> Terrain de Rugby Omnes</p>
-                    <button class="cta-button">S'inscrire</button>
+                    <button class="cta-button" onclick="handleRegistration()">S'inscrire</button>
                 </div>
             </div>
         </section>
@@ -192,7 +170,6 @@
             }
         });
 
-        // Service card hover effects
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-5px)';

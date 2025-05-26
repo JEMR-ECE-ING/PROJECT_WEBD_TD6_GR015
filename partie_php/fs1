@@ -1,0 +1,30 @@
+<?php
+// fs1.php — seed categories_sportives table
+//Faut lancer la commande suivante "php fs1.php"
+
+$host='localhost';
+$dbname='sportify';
+$user='root';
+$password= '';
+$charset='utf8mb4';
+
+$conn = mysqli_connect($host, $user, $password, $dbname);
+if (!$conn) {
+    die("Erreur de connexion : " . mysqli_connect_error());
+}
+
+$sql = "
+INSERT INTO categories_sport (nom_categorie, description) VALUES
+  ('activites_sportives', 'Toutes les activités disponibles pour les athlètes de tout niveau.'),
+  ('sports_competition',   'Sports de compétition pour les athlètes plus habiles.'),
+  ('salle_sport',          'Bref, la salle de sport. Rien de nouveau.')
+;
+";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Tout est gucci pour les categories";
+} else {
+    echo "Erreur lors de l’insertion des categories : " . mysqli_error($conn);
+}
+
+mysqli_close($conn);

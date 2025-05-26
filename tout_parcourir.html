@@ -1,0 +1,61 @@
+<DOCTYPE !html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sportify_ToutParcourir</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    <head>
+    <body>
+        <header class="header">
+            <nav class="nav-container">
+                <div class="logo">
+                    <div><img src="images/logov2.png" class = "logo-icon"></div>
+                    <span class="logo-text">SPORTIFY</span> 
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="accueil.html">Accueil</a></li>
+                    <li><a href="tout_parcourir.html">Tout Parcourir</a></li>
+                    <li><a href="#recherche">Recherche</a></li>
+                    <li><a href="#rdv">Rendez-vous</a></li>
+                    <li><a href="#compte">Votre Compte</a></li>
+                </ul>
+
+                <div class="nav-auth">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Rechercher...">
+                        <button><img src="images/search.png" class="logo-recherche"></button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="main-background">
+            <section class="services-section">
+                <h2 class="services-title">NOS SERVICES</h2>
+                <div class="services-grid">
+                    <div class="service-card" onclick="showCategory('activites')">
+                        <div><img src="images/muscu.png" class="service-icon"></div>
+                        <h3>Activités Sportives</h3>
+                        <p>Musculation, Fitness, Biking, Cardio-Training, Cours Collectifs</p>
+                        <button class="service-button">VOIR SERVICES</button>
+                    </div>
+
+                    <div class="service-card" onclick="showCategory('competition')">
+                        <div><img src="images/trophe.png" class="service-icon"></div>
+                        <h3>Sports de Compétition</h3>
+                        <p>Basketball, Football, Rugby, Tennis, Natation, Plongeon</p>
+                        <button class="service-button">VOIR SERVICES</button>
+                    </div>
+
+                    <div class="service-card" onclick="showCategory('salle')">
+                        <div><img src="images/omnes.png" class="service-icon"></div>
+                        <h3>Salle de Sport Omnes</h3>
+                        <p>Équipements, Horaires, Règles d'utilisation, Nouveaux clients</p>
+                        <button class="service-button">VOIR SERVICES</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
