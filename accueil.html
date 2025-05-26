@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportify</title>
+    <!--Feuille de CSS-->
+    <link rel="stylesheet" href="style.css"></head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div><img src="images/logov2.png" class = "logo-icon"></div>
+                <span class="logo-text">SPORTIFY</span> 
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#parcourir">Tout Parcourir</a></li>
+                <li><a href="#recherche">Recherche</a></li>
+                <li><a href="#rdv">Rendez-vous</a></li>
+                <li><a href="#compte">Votre Compte</a></li>
+            </ul>
+
+            <div class="nav-auth">
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher...">
+                    <button><img src="images/search.png" class="logo-recherche"></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="main-background">
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>LIBÉREZ VOTRE POTENTIEL SPORTIF</h1>
+            <p>Consultation sur mesure, staff personnalisé et performance optimale.</p>
+            <p>Commencez dès aujourd'hui avec nos coachs certifiés.</p>
+            <button class="cta-button">Prendre RDV</button>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <h2 class="services-title">NOS SERVICES</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="showCategory('activites')">
+                    <div><img src="images/muscu.png" class="service-icon"></div>
+                    <h3>Activités Sportives</h3>
+                    <p>Musculation, Fitness, Biking, Cardio-Training, Cours Collectifs</p>
+                    <button class="service-button">VOIR SERVICES</button>
+                </div>
+
+                <div class="service-card" onclick="showCategory('competition')">
+                    <div><img src="images/trophe.png" class="service-icon"></div>
+                    <h3>Sports de Compétition</h3>
+                    <p>Basketball, Football, Rugby, Tennis, Natation, Plongeon</p>
+                    <button class="service-button">VOIR SERVICES</button>
+                </div>
+
+                <div class="service-card" onclick="showCategory('salle')">
+                    <div><img src="images/omnes.png" class="service-icon"></div>
+                    <h3>Salle de Sport Omnes</h3>
+                    <p>Équipements, Horaires, Règles d'utilisation, Nouveaux clients</p>
+                    <button class="service-button">VOIR SERVICES</button>
+                </div>
+
+                <div class="service-card" onclick="showCategory('consultation')">
+                    <div><img src="images/consulting.png" class="service-icon"></div>
+                    <h3>Consultation Personnalisée</h3>
+                    <p>Suivi individuel, Programmes sur mesure, Conseils nutritionnels</p>
+                    <button class="service-button">VOIR SERVICES</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Section -->
+        <section class="event-section">
+            <h2 class="event-title">ÉVÉNEMENT DE LA SEMAINE</h2>
+            <div class="event-content">
+                <div class="event-image">
+                    [IMAGE DE L'ÉVÉNEMENT]
+                </div>
+                <div>
+                    <h3>Match de Rugby : Omnes Education vs. Visiteurs</h3>
+                    <p>Rejoignez-nous ce samedi pour un match passionnant entre notre équipe Omnes Education et nos visiteurs. Venez encourager nos joueurs et découvrir l'esprit sportif de notre communauté.</p>
+                    <p><strong>Date :</strong> Samedi 31 Mai 2025</p>
+                    <p><strong>Heure :</strong> 15h00</p>
+                    <p><strong>Lieu :</strong> Terrain de Rugby Omnes</p>
+                    <button class="cta-button">S'inscrire</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coach Carousel -->
+        <section class="coach-section">
+            <h2 class="coach-title">NOS COACHS CERTIFIÉS</h2>
+            <div class="coach-carousel">
+                <div class="coach-card">
+                    <div class="coach-avatar">GD</div>
+                    <div class="coach-name">Guy DUMAIS</div>
+                    <div class="coach-specialty">Musculation</div>
+                    <div class="availability-status available">Disponible</div>
+                </div>
+
+                <div class="coach-card">
+                    <div class="coach-avatar">ML</div>
+                    <div class="coach-name">Marie LAURENT</div>
+                    <div class="coach-specialty">Tennis</div>
+                    <div class="availability-status busy">Occupé</div>
+                </div>
+
+                <div class="coach-card">
+                    <div class="coach-avatar">PD</div>
+                    <div class="coach-name">Pierre DUBOIS</div>
+                    <div class="coach-specialty">Natation</div>
+                    <div class="availability-status available">Disponible</div>
+                </div>
+
+                <div class="coach-card">
+                    <div class="coach-avatar">SM</div>
+                    <div class="coach-name">Sophie MARTIN</div>
+                    <div class="coach-specialty">Fitness</div>
+                    <div class="availability-status available">Disponible</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Sportify</h3>
+                <p>contact@sportify-omnes.fr</p>
+                <p>01 23 45 67 89</p>
+                <p>Campus Omnes Education</p>
+                <p>123 Rue du Sport, 75000 Paris</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Horaires</h3>
+                <p>Lundi - Vendredi : 8h00 - 20h00</p>
+                <p>Samedi : 9h00 - 18h00</p>
+                <p>Dimanche : 10h00 - 16h00</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <a href="#activites">Activités Sportives</a>
+                <a href="#competition">Sports de Compétition</a>
+                <a href="#salle">Salle de Sport</a>
+                <a href="#rdv">Mes Rendez-vous</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Localisation</h3>
+                <div class="map-placeholder">
+                     <iframe
+                        src="https://maps.google.com/maps?q=10%20Rue%20Sextius%20Michel%2C%20750006%20Paris&hl=fr&z=15&output=embed"                        width="100%"
+                        height="100%"
+                        style="border:0; border-radius:8px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sportify - Omnes Education. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple interactivity for demonstration
+        function showCategory(category) {
+            alert(`Redirection vers la section : ${category}`);
+        }
+
+        // Search functionality
+        document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value;
+                if (query) {
+                    alert(`Recherche pour : ${query}`);
+                }
+            }
+        });
+
+        // Service card hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Coach availability simulation
+        setInterval(() => {
+            document.querySelectorAll('.availability-status').forEach(status => {
+                if (Math.random() > 0.8) {
+                    if (status.classList.contains('available')) {
+                        status.classList.remove('available');
+                        status.classList.add('busy');
+                        status.textContent = 'Occupé';
+                    } else {
+                        status.classList.remove('busy');
+                        status.classList.add('available');
+                        status.textContent = 'Disponible';
+                    }
+                }
+            });
+        }, 10000);
+    </script>
+</body>
+</html>
