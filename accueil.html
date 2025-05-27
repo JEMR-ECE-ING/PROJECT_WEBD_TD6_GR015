@@ -7,7 +7,7 @@
     <!--Feuille de CSS-->
     <link rel="stylesheet" href="style.css"></head>
 <body>
-    <!-- Header -->
+    <!--Header-->
     <header class="header">
         <nav class="nav-container">
             <div class="logo">
@@ -17,16 +17,22 @@
             
             <ul class="nav-menu">
                 <li><a href="accueil.html">Accueil</a></li>
-                <li><a href="tout_parcourir.html">Tout Parcourir</a></li>
+                <li><a href="tout_parcourir.php">Tout Parcourir</a></li>
                 <li><a href="#recherche">Recherche</a></li>
                 <li><a href="#rdv">Rendez-vous</a></li>
                 <li><a href="#compte">Votre Compte</a></li>
             </ul>
-
+            <!--Petit bouton recherche avec partie.-->
             <div class="nav-auth">
+                <!--
                 <div class="search-bar">
                     <input type="text" placeholder="Rechercher...">
                     <button><img src="images/search.png" class="logo-recherche"></button>
+                </div>
+                -->
+                <div class="cta-wrapper">
+                    <button class="cta-button" id="register" onclick="window.location.href='formulaire_inscription.html'">Créer un compte</button>
+                    <button class="cta-button" id="login">Se connecter</button>
                 </div>
             </div>
         </nav>
@@ -41,10 +47,6 @@
                 Votre navigateur ne supporte pas la vidéo HTML5.
             </video>
             <h1>LIBÉREZ VOTRE POTENTIEL SPORTIF</h1>
-            <p>Sportify est la plateforme de consultation sportive en ligne dédiée à la communauté Omnes Education.</p>
-            <P>Vous y découvrez tous nos spécialistes – coachs d’activités sportives, entraîneurs de sports de compétition ou responsables de la salle Omnes – et accédez à leur profil complet (CV, coordonnées, planning hebdomadaire).</P>
-            <P>Échangez en un clic par chat, audio ou visioconférence, réservez directement un créneau disponible et recevez votre confirmation par email ou SMS. </P>
-            <P>Sportify simplifie la prise de rendez-vous et vous accompagne efficacement vers vos objectifs, où que vous soyez ! </p>
             <button class="cta-button">Prendre RDV</button>
         </section>
 

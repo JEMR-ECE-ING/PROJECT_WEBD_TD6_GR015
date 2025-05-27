@@ -1,3 +1,9 @@
+<?php
+// tout_parcourir.php
+
+
+?>
+
 <DOCTYPE !html>
 <html lang="fr">
     <head>
@@ -35,7 +41,7 @@
             <section class="services-section">
                 <h2 class="services-title">NOS SERVICES</h2>
                 <div class="services-grid">
-                    <div class="service-card" onclick="showCategory('activites')">
+                    <div class="service-card">
                         <div><img src="images/muscu.png" class="service-icon"></div>
                         <h3>Activités Sportives</h3>
                         <p>Musculation, Fitness, Biking, Cardio-Training, Cours Collectifs</p>

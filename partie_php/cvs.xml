@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cvs>
+  <cv id="1">
+    <Nom>Dupont</Nom>
+    <Prenom>Alice</Prenom>
+    <Discipline>Musculation</Discipline>
+    <Email>alice.dupont@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 01</Telephone>
+    <Adresse>
+      <Rue>10 Rue de la Liberté</Rue>
+      <CodePostal>75001</CodePostal>
+      <Ville>Paris</Ville>
+    </Adresse>
+    <Formation>DEJEPS Activités Gymniques</Formation>
+    <Experience>5 ans d'expérience</Experience>
+  </cv>
+  <cv id="2">
+    <Nom>Martin</Nom>
+    <Prenom>Bob</Prenom>
+    <Discipline>Fitness</Discipline>
+    <Email>bob.martin@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 02</Telephone>
+    <Adresse>
+      <Rue>22 Avenue Victor Hugo</Rue>
+      <CodePostal>69002</CodePostal>
+      <Ville>Lyon</Ville>
+    </Adresse>
+    <Formation>Licence STAPS</Formation>
+    <Experience>4 ans d'expérience</Experience>
+  </cv>
+  <cv id="3">
+    <Nom>Durand</Nom>
+    <Prenom>Chloé</Prenom>
+    <Discipline>Spinning</Discipline>
+    <Email>chloe.durand@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 03</Telephone>
+    <Adresse>
+      <Rue>5 Place Bellecour</Rue>
+      <CodePostal>69002</CodePostal>
+      <Ville>Lyon</Ville>
+    </Adresse>
+    <Formation>BPJEPS Activités Cyclistes</Formation>
+    <Experience>3 ans d'expérience</Experience>
+  </cv>
+  <cv id="4">
+    <Nom>Bernard</Nom>
+    <Prenom>David</Prenom>
+    <Discipline>Cardio-Training</Discipline>
+    <Email>david.bernard@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 04</Telephone>
+    <Adresse>
+      <Rue>14 Rue Faidherbe</Rue>
+      <CodePostal>59000</CodePostal>
+      <Ville>Lille</Ville>
+    </Adresse>
+    <Formation>DEJEPS Performance Sportive</Formation>
+    <Experience>6 ans d'expérience</Experience>
+  </cv>
+  <cv id="5">
+    <Nom>Lefebvre</Nom>
+    <Prenom>Emilie</Prenom>
+    <Discipline>Yoga</Discipline>
+    <Email>emilie.lefebvre@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 05</Telephone>
+    <Adresse>
+      <Rue>8 Rue du Fort</Rue>
+      <CodePostal>34000</CodePostal>
+      <Ville>Montpellier</Ville>
+    </Adresse>
+    <Formation>Formation Yoga Alliance</Formation>
+    <Experience>5 ans d'expérience</Experience>
+  </cv>
+  <cv id="6">
+    <Nom>Moreau</Nom>
+    <Prenom>François</Prenom>
+    <Discipline>Basketball</Discipline>
+    <Email>francois.moreau@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 06</Telephone>
+    <Adresse>
+      <Rue>30 Rue de la République</Rue>
+      <CodePostal>13001</CodePostal>
+      <Ville>Marseille</Ville>
+    </Adresse>
+    <Formation>Licence STAPS Mention Basket</Formation>
+    <Experience>7 ans d'expérience</Experience>
+  </cv>
+  <cv id="7">
+    <Nom>Petit</Nom>
+    <Prenom>Gabrielle</Prenom>
+    <Discipline>Football</Discipline>
+    <Email>gabrielle.petit@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 07</Telephone>
+    <Adresse>
+      <Rue>12 Boulevard Haussmann</Rue>
+      <CodePostal>75009</CodePostal>
+      <Ville>Paris</Ville>
+    </Adresse>
+    <Formation>DEJEPS Football</Formation>
+    <Experience>6 ans d'expérience</Experience>
+  </cv>
+  <cv id="8">
+    <Nom>Dubois</Nom>
+    <Prenom>Hugo</Prenom>
+    <Discipline>Rugby</Discipline>
+    <Email>hugo.dubois@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 08</Telephone>
+    <Adresse>
+      <Rue>18 Allée de la Gare</Rue>
+      <CodePostal>31000</CodePostal>
+      <Ville>Toulouse</Ville>
+    </Adresse>
+    <Formation>BPJEPS Rugby</Formation>
+    <Experience>4 ans d'expérience</Experience>
+  </cv>
+  <cv id="9">
+    <Nom>Laurent</Nom>
+    <Prenom>Isabelle</Prenom>
+    <Discipline>Tennis</Discipline>
+    <Email>isabelle.laurent@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 09</Telephone>
+    <Adresse>
+      <Rue>2 Rue Gambetta</Rue>
+      <CodePostal>33000</CodePostal>
+      <Ville>Bordeaux</Ville>
+    </Adresse>
+    <Formation>DEJEPS Tennis</Formation>
+    <Experience>5 ans d'expérience</Experience>
+  </cv>
+  <cv id="10">
+    <Nom>Garnier</Nom>
+    <Prenom>Julien</Prenom>
+    <Discipline>Natation</Discipline>
+    <Email>julien.garnier@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 10</Telephone>
+    <Adresse>
+      <Rue>45 Quai de la Douane</Rue>
+      <CodePostal>67000</CodePostal>
+      <Ville>Strasbourg</Ville>
+    </Adresse>
+    <Formation>BPJEPS Natation</Formation>
+    <Experience>5 ans d'expérience</Experience>
+  </cv>
+  <cv id="11">
+    <Nom>Roy</Nom>
+    <Prenom>Karine</Prenom>
+    <Discipline>Plongeon</Discipline>
+    <Email>karine.roy@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 11</Telephone>
+    <Adresse>
+      <Rue>7 Rue de Sèze</Rue>
+      <CodePostal>33000</CodePostal>
+      <Ville>Bordeaux</Ville>
+    </Adresse>
+    <Formation>DEJEPS Plongeon</Formation>
+    <Experience>4 ans d'expérience</Experience>
+  </cv>
+  <cv id="12">
+    <Nom>Fontaine</Nom>
+    <Prenom>Laurent</Prenom>
+    <Discipline>Zumba</Discipline>
+    <Email>laurent.fontaine@omneseducation.fr</Email>
+    <Telephone>+33 6 12 34 56 12</Telephone>
+    <Adresse>
+      <Rue>3 Rue de la Sorbonne</Rue>
+      <CodePostal>75005</CodePostal>
+      <Ville>Paris</Ville>
+    </Adresse>
+    <Formation>Diplôme Zumba Instructor</Formation>
+    <Experience>3 ans d'expérience</Experience>
+  </cv>
+</cvs>

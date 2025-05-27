@@ -4,7 +4,6 @@
 INSERT INTO categories_sport (nom_categorie, description) VALUES
     ('activites_sportives','Toutes les activités disponibles pour les athlètes de tout niveau.'),
     ('sports_competition','Sports de compétition pour les athlètes plus habiles.'),
-    ('salle_sport','Bref, la salle de sport. Rien de nouveau.');
 
 INSERT INTO activites_sportives (
     nom_activite,
@@ -34,17 +33,3 @@ INSERT INTO activites_sportives (
     ('Tennis',2, 'Exercices cardio intenses',24.99, 120, 1),
     ('Natation',2, 'Perfectionnement en nage libre, dos, etc.',24.99, 120, 1),
     ('Plongeon',2, 'Techniques de plongeon et de saut', 24.99, 120, 1);
-
-INSERT INTO activites_sportives (
-    nom_activite,
-    id_categorie,
-    description,
-    prix,
-    duree_seance,
-    actif
-) VALUES
-    ('Personnel de la salle de sport',3, 'Encadrement et surveillance de la salle',0.00, 0, 1),
-    ('Horaires de la salle de sport',3, 'Accès libre selon planning hebdomadaire',0.00, 0, 1),
-    ('Règles sur l’utilisation des machines',3, 'Consignes de sécurité et d’usage des appareils',0.00, 0, 1),
-    ('Nouveaux clients',3, 'Accueil et briefing des nouveaux adhérents',0.00, 0, 1),
-    ('Alimentation et nutrition',3, 'Conseils diététiques et plans nutritionnels', 0.00, 0, 1);

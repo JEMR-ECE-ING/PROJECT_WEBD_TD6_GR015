@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS utilisateurs (
     id_utilisateur INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(100) NOT NULL,
     prenom VARCHAR(100) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(191) UNIQUE NOT NULL,
     mot_de_passe VARCHAR(255) NOT NULL,
     type_utilisateur ENUM('admin','coach','client') NOT NULL,
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -101,10 +101,55 @@ CREATE TABLE IF NOT EXISTS rendez_vous (
     FOREIGN KEY (id_coach) REFERENCES coachs(id_coach),
     FOREIGN KEY (id_activite) REFERENCES activites_sportives(id_activite)
 );
+
+CREATE TABLE IF NOT EXISTS paiements (
+    id_paiement INT PRIMARY KEY AUTO_INCREMENT,
+    id_client INT NOT NULL,
+    id_rdv INT NOT NULL,
+    montant DECIMAL(10,2) NOT NULL,
+    type_carte ENUM('visa', 'mastercard', 'amex') NOT NULL,
+    numero_carte_masque VARCHAR(20) NOT NULL,
+    statut_paiement ENUM('en_attente', 'reussi', 'echec') DEFAULT "en_attente",
+    date_paiement TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    reference_transaction VARCHAR(100) UNIQUE,
+
+    FOREIGN KEY (id_client) REFERENCES clients(id_client),
+    FOREIGN KEY (id_rdv) REFERENCES rendez_vous(id_rdv)
+);
+
+CREATE TABLE IF NOT EXISTS cartes_paiement(
+    id_carte INT PRIMARY KEY AUTO_INCREMENT,
+    id_client INT NOT NULL,
+    type_carte ENUM('visa', 'mastercard', 'amex') NOT NULL,
+    numero_carte_masque VARCHAR(20) NOT NULL,
+    nom_carte VARCHAR(255) NOT NULL,
+    date_expiration DATE,
+    date_ajout TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_client) REFERENCES clients(id_client) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS salle_sport (
+    id_salle INT PRIMARY KEY AUTO_INCREMENT,
+    numero_salle VARCHAR(10) NOT NULL,
+    telephone VARCHAR(20) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    description TEXT,
+    actif BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE IF NOT EXISTS services_salle_sport (
+    id_service INT PRIMARY KEY AUTO_INCREMENT,
+    id_salle INT NOT NULL,
+    nom_service VARCHAR(255) NOT NULL,
+    description TEXT,
+    actif BOOLEAN DEFAULT TRUE,
+
+    FOREIGN KEY(id_salle) REFERENCES salle_sport(id_salle) ON DELETE CASCADE
+);
+
+
 SQL;
 
-// 3) Execution du SQL
-//On separe le tout au niveau des ;
 $statements = array_filter(array_map('trim', explode(';', $sql)));
 
 foreach ($statements as $stmt) {
