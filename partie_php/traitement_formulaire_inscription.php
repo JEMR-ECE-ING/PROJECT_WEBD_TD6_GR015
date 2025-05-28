@@ -12,12 +12,12 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur de connexion à la BDD";
-    header('Location: ../formulaire_inscription.html');
+    header('Location: ../formulaire_inscription.php');
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../formulaire_inscription.html');
+    header('Location: ../formulaire_inscription.php');
     exit();
 }
 
@@ -94,7 +94,7 @@ if (!empty($erreurs)) {
         'telephone' => $_POST['telephone'] ?? '',
         'carte_etudiant' => $_POST['carte_etudiant'] ?? '',
     ];
-    header("Location: ../formulaire_inscription.html");
+    header("Location: ../formulaire_inscription.php");
     exit();
 }
 
@@ -148,7 +148,7 @@ try {
     unset($_SESSION['form_data']);
     
     $_SESSION['reussite_totale'] = 'Compte créé avec succès ! Vous pouvez maintenant vous connecter';
-    header("Location: ../connexion.html");
+    header("Location: ../formulaire_connexion.php");
     exit();
     
 } catch(PDOException $e) {
@@ -156,7 +156,7 @@ try {
     
     //
     $_SESSION['erreur'] = "Erreur lors de la création: " . $e->getMessage();
-    header("Location: ../formulaire_inscription.html");
+    header("Location: ../formulaire_inscription.php");
     exit();
 }
 ?>

@@ -66,7 +66,7 @@ function getActivitesEtCoachs(PDO $pdo, int $idCategorie): array {
             <span class="logo-text">SPORTIFY</span> 
         </div>
         <ul class="nav-menu">
-            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="accueil.php">Accueil</a></li>
             <li><a href="tout_parcourir.php">Tout Parcourir</a></li>
             <li><a href="#recherche">Recherche</a></li>
             <li><a href="#rdv">Rendez-vous</a></li>
@@ -74,8 +74,8 @@ function getActivitesEtCoachs(PDO $pdo, int $idCategorie): array {
         </ul>
         <div class="nav-auth">
             <div class="cta-wrapper">
-                <button class="cta-button" onclick="window.location.href='formulaire_inscription.html'">Créer un compte</button>
-                <button class="cta-button" onclick="window.location.href='formulaire_connexion.html'">Se connecter</button>
+                <button class="cta-button" onclick="window.location.href='formulaire_inscription.php'">Créer un compte</button>
+                <button class="cta-button" onclick="window.location.href='formulaire_connexion.php'">Se connecter</button>
             </div>
         </div>
     </nav>

@@ -15,7 +15,7 @@
             </div>
             
             <ul class="nav-menu">
-                <li><a href="accueil.html">Accueil</a></li>
+                <li><a href="accueil.php">Accueil</a></li>
                 <li><a href="tout_parcourir.php">Tout Parcourir</a></li>
                 <li><a href="#recherche">Recherche</a></li>
                 <li><a href="#rdv">Rendez-vous</a></li>
@@ -30,8 +30,8 @@
                 </div>
                 -->
                 <div class="cta-wrapper">
-                    <button class="cta-button" onclick="window.location.href='formulaire_inscription.html'">Créer un compte</button>
-                    <button class="cta-button" onclick="window.location.href='formulaire_connexion.html'">Se connecter</button>
+                    <button class="cta-button" onclick="window.location.href='formulaire_inscription.php'">Créer un compte</button>
+                    <button class="cta-button" onclick="window.location.href='formulaire_connexion.php'">Se connecter</button>
                 </div>
             </div>
         </nav>
@@ -43,10 +43,9 @@
                 <h2 class="event-title">Connexion</h2>
                 <div class="event-content">
                      <div>
-                        <img src="images/coolimage.png" alt="Match de Rugby" class="event-image">
+                        <img src="images/coolimage.png" alt="stade_login" class="event-image">
                     </div>
                     
-                    <!-- message d'erreur et success-->
                     <div class="event-details">
                         <div id="messages-container"></div>
 
@@ -67,7 +66,7 @@
 
                         <div class="login-section">
                             <p style="color: #cccccc;">Vous n'avez pas de compte ?</p>
-                            <button type="button" class="cta-button" onclick="window.location.href='formulaire_inscription.html'">
+                            <button type="button" class="cta-button" onclick="window.location.href='formulaire_inscription.php'">
                                 Créer un compte
                             </button>
                         </div>

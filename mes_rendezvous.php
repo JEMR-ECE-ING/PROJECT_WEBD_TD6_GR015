@@ -14,11 +14,19 @@ try {
 } catch (PDOException $e) {
     die("Erreur base de données: " . $e->getMessage());
 }
+
+// VÉRIFIER QUE L'UTILISATEUR EST CONNECTÉ EN PREMIER
+$id_utilisateur = $_SESSION['id_utilisateur'] ?? null;
+if (!$id_utilisateur) {
+    header('Location: formulaire_connexion.php');
+    exit();
+}
+
 // TRAITEMENT DE LA SUPPRESSION DE RENDEZ-VOUS
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_rdv'])) {
     $id_rdv_a_supprimer = intval($_POST['delete_rdv']);
 
-    // Vérifier que ce rendez-vous appartient à l'utilisateur connecté
+    //Verifiez que le rendez-vous appartient à l'utilisateur connecte
     $stmtCheck = $pdo->prepare("SELECT id_rdv FROM rendez_vous WHERE id_rdv = ? AND id_client = ?");
     $stmtCheck->execute([$id_rdv_a_supprimer, $id_utilisateur]);
     if ($stmtCheck->fetch()) {
@@ -33,20 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_rdv'])) {
     exit();
 }
 
-// Vérifier que l'utilisateur est connecté
-$id_utilisateur = $_SESSION['user_id'] ?? null;
-if (!$id_utilisateur) {
-    header('Location: formulaire_connexion.html');
-    exit();
-}
-
-// TRAITEMENT DU FORMULAIRE POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// TRAITEMENT DU FORMULAIRE POST POUR CRÉATION DE RDV
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_activite'])) {
     $id_activite = $_POST['id_activite'] ?? null;
     $id_coach = $_POST['id_coach'] ?? null;
     $date_heure_rdv = $_POST['date_heure_rdv'] ?? null;
 
-    // Nettoyage sommaire (à améliorer si besoin)
+    // Nettoyage sommaire
     $id_activite = intval($id_activite);
     $id_coach = intval($id_coach);
     $date_heure_rdv = trim($date_heure_rdv);
@@ -57,24 +58,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+    // Récupérer les informations de l'activité pour le prix
+    $stmtActivite = $pdo->prepare("SELECT * FROM activites_sportives WHERE id_activite = ?");
+    $stmtActivite->execute([$id_activite]);
+    $activiteSelectionnee = $stmtActivite->fetch();
+
+    if (!$activiteSelectionnee) {
+        $_SESSION['error'] = "Activité non trouvée.";
+        header("Location: mes_rendezvous.php");
+        exit();
+    }
+
     // Calculer une date complète à partir de "Jeudi 08h00-10h00"
-    // Ici on va supposer que "Jeudi" = jeudi de la semaine en cours ou la suivante si déjà passé
-    // Pour simplifier, on prendra la date du prochain jour indiqué (Jeudi ou Vendredi)
-    $jours_fr = ['Jeudi' => 4, 'Vendredi' => 5]; // jours de la semaine (1 = lundi, 7 = dimanche)
+    $jours_fr = ['Jeudi' => 4, 'Vendredi' => 5];
 
     // Extraire jour et plage horaire
     if (preg_match('/^(Jeudi|Vendredi) (\d{2}h\d{2})-\d{2}h\d{2}$/', $date_heure_rdv, $matches)) {
         $jour = $matches[1];
         $heure_debut = str_replace('h', ':', $matches[2]);
 
-        // Trouver date du prochain jour (Jeudi ou Vendredi)
+        // Trouver date du prochain jour
         $aujourdhui = new DateTime();
-        $numero_jour_aujourdhui = (int)$aujourdhui->format('N'); // 1 = lundi ... 7 = dimanche
+        $numero_jour_aujourdhui = (int)$aujourdhui->format('N');
         $numero_jour_cible = $jours_fr[$jour];
 
         $diff_jours = $numero_jour_cible - $numero_jour_aujourdhui;
         if ($diff_jours < 0) {
-            $diff_jours += 7; // jour suivant dans la semaine prochaine
+            $diff_jours += 7;
         }
         $date_rdv_obj = clone $aujourdhui;
         $date_rdv_obj->modify("+$diff_jours days");
@@ -87,10 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Durée par défaut (à adapter selon activité ?)
+    // Durée par défaut
     $duree = 120; // 2h
 
-    // Vérifier qu'aucun rendez-vous ne chevauche le créneau choisi (simple check)
+    // Vérifier qu'aucun rendez-vous ne chevauche le créneau choisi
     $stmtCheck = $pdo->prepare("
         SELECT COUNT(*) FROM rendez_vous 
         WHERE id_coach = ? AND date_rdv = ? AND statut = 'confirme'
@@ -111,13 +121,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ");
     $stmtInsert->execute([$id_utilisateur, $id_coach, $id_activite, $date_rdv_formatted, $duree]);
 
-    $_SESSION['success'] = "Rendez-vous enregistré avec succès pour le " . $date_rdv_obj->format('d/m/Y H:i');
+    // Récupérer l'ID du RDV créé
+    $id_rdv_insert = $pdo->lastInsertId();
+
+    // TRAITEMENT DU PAIEMENT (seulement si RDV créé avec succès)
+    $stmtCard = $pdo->prepare("
+        SELECT type_carte, numero_carte_masque 
+        FROM cartes_paiement 
+        WHERE id_client = ?
+        ORDER BY id_carte DESC
+        LIMIT 1
+    ");
+    $stmtCard->execute([$id_utilisateur]);
+    $carte = $stmtCard->fetch();
+
+    // Si pas de carte, on bloque
+    if (!$carte) {
+        // Supprimer le RDV créé car pas de carte
+        $pdo->prepare("DELETE FROM rendez_vous WHERE id_rdv = ?")->execute([$id_rdv_insert]);
+        $_SESSION['error'] = "Veuillez enregistrer une carte avant de confirmer le rendez-vous.";
+        header("Location: mes_rendezvous.php");
+        exit();
+    }
+
+    $type_carte = $carte['type_carte'];
+    $numero_masque = $carte['numero_carte_masque'];
+    $montant = $activiteSelectionnee['prix'];
+    $reference_tx = bin2hex(random_bytes(8));
+
+    // Insérer une transaction en attente
+    $stmtPay = $pdo->prepare("
+        INSERT INTO paiements 
+        (id_client, id_rdv, montant, type_carte, numero_carte_masque, statut_paiement, reference_transaction) 
+        VALUES (?, ?, ?, ?, ?, 'en_attente', ?)
+    ");
+    $stmtPay->execute([
+        $id_utilisateur,
+        $id_rdv_insert,
+        $montant,
+        $type_carte,
+        $numero_masque,
+        $reference_tx
+    ]);
+
+    $_SESSION['success'] = "Rendez-vous confirmé ! Votre paiement est en attente (réf. $reference_tx).";
     header("Location: mes_rendezvous.php");
     exit();
 }
-
-// ---- FIN DU TRAITEMENT POST, AFFICHAGE HTML COMMENCE ----
-
 
 // Gestion message session affichage
 $message = '';
@@ -176,6 +226,7 @@ $stmtCoachs = $pdo->query("
     JOIN utilisateurs u ON c.id_coach = u.id_utilisateur
 ");
 $coachs = $stmtCoachs->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -296,18 +347,19 @@ $coachs = $stmtCoachs->fetchAll();
             <span class="logo-text">SPORTIFY</span> 
         </div>
         <ul class="nav-menu">
-            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="accueil.php">Accueil</a></li>
             <li><a href="tout_parcourir.php">Tout Parcourir</a></li>
             <li><a href="#recherche">Recherche</a></li>
             <li><a href="mes_rendezvous.php">Rendez-vous</a></li>
             <li><a href="votre_compte.php">Votre Compte</a></li>
         </ul>
         <div class="nav-auth">
-            <div class="cta-wrapper">
-                <button class="cta-button" onclick="window.location.href='formulaire_inscription.html'">Créer un compte</button>
-                <button class="cta-button" onclick="window.location.href='formulaire_connexion.html'">Se connecter</button>
-            </div>
-        </div>
+                <div class="cta-wrapper">
+                    <button class="cta-button" onclick="window.location.href='partie_php/traitement_logout.php'">
+                    Déconnexion
+                    </button>
+                </div>
+        <div>
     </nav>
 </header>
 

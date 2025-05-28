@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-// Verifier si un utilisateur est utilisse
-if (!isset($_SESSION['user_id'])) {
-    header("Location: formulaire_connexion.html");
+if (!isset($_SESSION['id_utilisateur'])) {
+    header("Location: formulaire_connexion.php");
     exit();
 }
 
@@ -135,17 +134,20 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
             </div>
             
             <ul class="nav-menu">
-                <li><a href="accueil.html">Accueil</a></li>
+                <li><a href="accueil.php">Accueil</a></li>
                 <li><a href="tout_parcourir.php">Tout Parcourir</a></li>
                 <li><a href="#recherche">Recherche</a></li>
                 <li><a href="mes_rendezvous.php">Rendez-vous</a></li>
                 <li><a href="votre_compte.php">Votre Compte</a></li>
             </ul>
             
-            <div class="cta-wrapper"></div>
-            <button class="cta-button" onclick="window.location.href='partie_php/logout.php'">
-                Déconnexion
-            </button>
+            <div class="nav-auth">
+                <div class="cta-wrapper">
+                    <button class="cta-button" onclick="window.location.href='partie_php/traitement_logout.php'">
+                    Déconnexion
+                    </button>
+                </div>
+            <div>
         </nav>
     </header>
 
@@ -162,17 +164,14 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
                 <span class="user-badge"><?php echo $type_utilisateur; ?></span>
             </div>
 
-            <!-- Actions principales communes -->
             <div class="actions-grid">
                 <div class="action-card" onclick="window.location.href='mes_rendezvous.php'">
-                    <div class="action-icon">📅</div>
                     <h3>Mes Rendez-vous</h3>
                     <p>Consultez et gérez vos rendez-vous</p>
                     <button class="cta-button">Accéder</button>
                 </div>
                 
-                <div class="action-card" onclick="window.location.href='moyens_paiement.php'">
-                    <div class="action-icon">💳</div>
+                <div class="action-card" onclick="window.location.href='formulaire_bancaire.php'">
                     <h3>Moyens de Paiement</h3>
                     <p>Gérez vos cartes et moyens de paiement</p>
                     <button class="cta-button">Gérer</button>
@@ -184,28 +183,24 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
             <h2 class="section-title">Administration</h2>
             <div class="actions-grid">
                 <div class="action-card" onclick="window.location.href='admin/gestion_coachs.php'">
-                    <div class="action-icon">👥</div>
                     <h3>Gestion des Coachs</h3>
                     <p>Ajouter, modifier ou supprimer des coachs</p>
                     <button class="cta-button">Gérer</button>
                 </div>
                 
-                <div class="action-card" onclick="window.location.href='admin/gestion_activites.php'">
-                    <div class="action-icon">🏃</div>
+                <div class="action-card" onclick="window.location.href='dashboard_admin.php'">
                     <h3>Gestion des Activités</h3>
                     <p>Gérer les activités sportives</p>
                     <button class="cta-button">Gérer</button>
                 </div>
                 
                 <div class="action-card" onclick="window.location.href='admin/statistiques.php'">
-                    <div class="action-icon">📊</div>
                     <h3>Statistiques</h3>
                     <p>Voir les statistiques détaillées</p>
                     <button class="cta-button">Voir</button>
                 </div>
                 
                 <div class="action-card" onclick="window.location.href='admin/gestion_salle.php'">
-                    <div class="action-icon">🏢</div>
                     <h3>Gestion Salle de Sport</h3>
                     <p>Gérer les informations de la salle</p>
                     <button class="cta-button">Gérer</button>
@@ -217,22 +212,19 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
             <!-- Section Coach -->
             <h2 class="section-title">Espace Coach</h2>
             <div class="actions-grid">
-                <div class="action-card" onclick="window.location.href='coach/planning.php'">
-                    <div class="action-icon">📆</div>
+                <div class="action-card" onclick="window.location.href='dashboard_admin.php'">
                     <h3>Mon Planning</h3>
                     <p>Gérer mes disponibilités</p>
                     <button class="cta-button">Voir</button>
                 </div>
                 
                 <div class="action-card" onclick="window.location.href='coach/messages.php'">
-                    <div class="action-icon">💬</div>
                     <h3>Messages Clients</h3>
                     <p>Communiquer avec mes clients</p>
                     <button class="cta-button">Ouvrir</button>
                 </div>
                 
                 <div class="action-card" onclick="window.location.href='coach/mon_cv.php'">
-                    <div class="action-icon">📄</div>
                     <h3>Mon CV</h3>
                     <p>Mettre à jour mon profil</p>
                     <button class="cta-button">Modifier</button>
@@ -242,24 +234,21 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
 
             <?php if ($type_utilisateur == 'client'): ?>
             <!-- Section Client -->
-            <h2 class="section-title">🏃 Mon Espace Personnel</h2>
+            <h2 class="section-title">Mon Espace Personnel</h2>
             <div class="actions-grid">
                 <div class="action-card" onclick="window.location.href='recherche_coach.php'">
-                    <div class="action-icon">🔍</div>
                     <h3>Rechercher un Coach</h3>
                     <p>Trouvez le coach idéal pour vos objectifs</p>
                     <button class="cta-button">Rechercher</button>
                 </div>
                 
-                <div class="action-card" onclick="window.location.href='client/historique.php'">
-                    <div class="action-icon">📈</div>
+                <div class="action-card" onclick="window.location.href='dashboard_admin.php'">
                     <h3>Mon Historique</h3>
                     <p>Consultez vos séances passées</p>
                     <button class="cta-button">Consulter</button>
                 </div>
                 
-                <div class="action-card" onclick="window.location.href='client/profil.php'">
-                    <div class="action-icon">👤</div>
+                <div class="action-card" onclick="window.location.href='votre_compte.php'">
                     <h3>Mon Profil</h3>
                     <p>Mettre à jour mes informations</p>
                     <button class="cta-button">Modifier</button>
