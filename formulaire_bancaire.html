@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ajouter une carte bancaire - Sportify</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 <header class="header">
     <nav class="nav-container">
         <div class="logo">
             <div><img src="images/logov2.png" class="logo-icon"></div>
-            <span class="logo-text">SPORTIFY</span> 
+            <span class="logo-text">SPORTIFY</span>
         </div>
         <ul class="nav-menu">
             <li><a href="accueil.html">Accueil</a></li>
@@ -30,9 +30,9 @@
 </header>
 
 <div class="main-background">
-    <main class="main-content">
+    <div class="main-content">
         <h2 class="event-title">Ajouter une carte bancaire</h2>
-        <form class="signup-form" method="POST" action="partie_php/ajouter_carte.php">
+        <form method="POST" action="partie_php/traitement_ajouter_carte.php" novalidate class="signup-form">
             <div class="form-group">
                 <label for="type_carte">Type de carte *</label>
                 <select id="type_carte" name="type_carte" required>
@@ -40,6 +40,7 @@
                     <option value="visa">Visa</option>
                     <option value="mastercard">MasterCard</option>
                     <option value="amex">American Express</option>
+                    <option value="paypal">Paypal</option>
                 </select>
             </div>
 
@@ -58,9 +59,9 @@
                 <input type="month" id="date_expiration" name="date_expiration" min="<?= date('Y-m') ?>">
             </div>
 
-            <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">Ajouter la carte</button>
+            <button type="submit" class="cta-button">Ajouter la carte</button>
         </form>
-    </main>
+    </div>
 </div>
 
 <footer class="footer">

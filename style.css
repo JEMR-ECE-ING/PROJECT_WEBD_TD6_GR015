@@ -7,11 +7,11 @@
 }
 
 body {
-font-family: 'Audiowide', sans-serif;
-font-size: 0.8rem;
-background-color: #0a0a0a;
-color: #ffffff;
-line-height: 1.6;
+  font-family: 'Audiowide', sans-serif;
+  font-size: 0.8rem;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  line-height: 1.6;
 }
 
 .header {
@@ -32,7 +32,7 @@ line-height: 1.6;
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+    gap: 0.5rem;
 }
 
 .logo-icon {
@@ -497,18 +497,7 @@ line-height: 1.6;
   }
 }
 
-/* Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .service-card,
 .coach-card {

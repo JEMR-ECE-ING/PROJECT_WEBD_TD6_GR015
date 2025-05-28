@@ -10,21 +10,28 @@
     <header class="header">
         <nav class="nav-container">
             <div class="logo">
-                <div><img src="images/logov2.png" class="logo-icon"></div>
+                <div><img src="images/logov2.png" class = "logo-icon"></div>
                 <span class="logo-text">SPORTIFY</span> 
             </div>
             
             <ul class="nav-menu">
                 <li><a href="accueil.html">Accueil</a></li>
-                <li><a href="tout_parcourir.html">Tout Parcourir</a></li>
+                <li><a href="tout_parcourir.php">Tout Parcourir</a></li>
                 <li><a href="#recherche">Recherche</a></li>
                 <li><a href="#rdv">Rendez-vous</a></li>
-                <li><a href="#compte">Votre Compte</a></li>
+                <li><a href="votre_compte.php">Votre Compte</a></li>
             </ul>
-
+            <!--Petit bouton recherche avec partie.-->
             <div class="nav-auth">
+                <!--
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher...">
+                    <button><img src="images/search.png" class="logo-recherche"></button>
+                </div>
+                -->
                 <div class="cta-wrapper">
                     <button class="cta-button" onclick="window.location.href='formulaire_inscription.html'">Créer un compte</button>
+                    <button class="cta-button" onclick="window.location.href='formulaire_connexion.html'">Se connecter</button>
                 </div>
             </div>
         </nav>
