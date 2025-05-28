@@ -28,7 +28,7 @@ $stmtUser->execute([$id_utilisateur]);
 $user_info = $stmtUser->fetch();
 
 if (!$user_info || $user_info['type_utilisateur'] !== 'admin') {
-    header('Location: accueil.php');
+    header('Location: historique.php');
     exit();
 }
 
