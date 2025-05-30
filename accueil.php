@@ -48,7 +48,6 @@ function genererInitiales($nom, $prenom) {
             <ul class="nav-menu">
                 <li><a href="accueil.php">Accueil</a></li>
                 <li><a href="tout_parcourir.php">Tout Parcourir</a></li>
-                <li><a href="#recherche">Recherche</a></li>
                 <li><a href="mes_rendezvous.php">Rendez-vous</a></li>
                 <li><a href="votre_compte.php">Votre Compte</a></li>
             </ul>

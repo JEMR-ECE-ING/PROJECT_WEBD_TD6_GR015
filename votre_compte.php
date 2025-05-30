@@ -7,11 +7,11 @@ if (!isset($_SESSION['id_utilisateur'])) {
 }
 
 // Recuperer les infos de la session
-$id_utilisateur = $_SESSION['id_utilisateur'];
-$nom = $_SESSION['nom'];
-$prenom = $_SESSION['prenom'];
-$email = $_SESSION['email'];
-$type_utilisateur = $_SESSION['type_utilisateur'];
+$id_utilisateur   = $_SESSION['id_utilisateur'];
+$nom               = $_SESSION['nom'];
+$prenom            = $_SESSION['prenom'];
+$email             = $_SESSION['email'];
+$type_utilisateur  = $_SESSION['type_utilisateur'];
 ?>
 
 <!DOCTYPE html>
@@ -82,11 +82,6 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
             box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
         }
         
-        .action-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
         .action-card h3 {
             color: #ffffff;
             font-size: 1.5rem;
@@ -129,14 +124,13 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
     <header class="header">
         <nav class="nav-container">
             <div class="logo">
-                <div><img src="images/logov2.png" class="logo-icon"></div>
+                <div><img src="images/logov2.png" class="logo-icon" alt="Logo"></div>
                 <span class="logo-text">SPORTIFY</span> 
             </div>
             
             <ul class="nav-menu">
                 <li><a href="accueil.php">Accueil</a></li>
                 <li><a href="tout_parcourir.php">Tout Parcourir</a></li>
-                <li><a href="#recherche">Recherche</a></li>
                 <li><a href="mes_rendezvous.php">Rendez-vous</a></li>
                 <li><a href="votre_compte.php">Votre Compte</a></li>
             </ul>
@@ -144,7 +138,7 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
             <div class="nav-auth">
                 <div class="cta-wrapper">
                     <button class="cta-button" onclick="window.location.href='partie_php/traitement_logout.php'">
-                    Déconnexion
+                        Déconnexion
                     </button>
                 </div>
             <div>
@@ -218,7 +212,7 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
                     <button class="cta-button">Voir</button>
                 </div>
                 
-                <div class="action-card" onclick="window.location.href='coach/messages.php'">
+                <div class="action-card" onclick="window.location.href='messages_coach.php'">
                     <h3>Messages Clients</h3>
                     <p>Communiquer avec mes clients</p>
                     <button class="cta-button">Ouvrir</button>
@@ -242,7 +236,7 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
                     <button class="cta-button">Rechercher</button>
                 </div>
                 
-                <div class="action-card" onclick="window.location.href='dashboard_admin.php'">
+                <div class="action-card" onclick="window.location.href='historique.php'">
                     <h3>Mon Historique</h3>
                     <p>Consultez vos séances passées</p>
                     <button class="cta-button">Consulter</button>
@@ -257,7 +251,8 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
             <?php endif; ?>
         </main>
     </div>
-<footer class="footer">
+     <!-- ======= Pied de page ======= -->
+    <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Contact Sportify</h3>
@@ -266,14 +261,12 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
                 <p>Campus Omnes Education</p>
                 <p>123 Rue du Sport, 75000 Paris</p>
             </div>
-
             <div class="footer-section">
                 <h3>Horaires</h3>
                 <p>Lundi - Vendredi : 8h00 - 20h00</p>
                 <p>Samedi : 9h00 - 18h00</p>
                 <p>Dimanche : 10h00 - 16h00</p>
             </div>
-
             <div class="footer-section">
                 <h3>Liens Rapides</h3>
                 <a href="#activites">Activités Sportives</a>
@@ -281,12 +274,12 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
                 <a href="#salle">Salle de Sport</a>
                 <a href="#rdv">Mes Rendez-vous</a>
             </div>
-
             <div class="footer-section">
                 <h3>Localisation</h3>
                 <div class="map-placeholder">
-                     <iframe
-                        src="https://maps.google.com/maps?q=10%20Rue%20Sextius%20Michel%2C%20750006%20Paris&hl=fr&z=15&output=embed"                        width="100%"
+                    <iframe
+                        src="https://maps.google.com/maps?q=10%20Rue%20Sextius%20Michel%2C%20750006%20Paris&hl=fr&z=15&output=embed"
+                        width="100%"
                         height="100%"
                         style="border:0; border-radius:8px;"
                         allowfullscreen=""
@@ -296,7 +289,6 @@ $type_utilisateur = $_SESSION['type_utilisateur'];
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>&copy; 2025 Sportify - Omnes Education. Tous droits réservés.</p>
         </div>
